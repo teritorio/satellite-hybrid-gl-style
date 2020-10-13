@@ -1,0 +1,32 @@
+language: node_js
+sudo: required
+node_js:
+  - '4'
+branches:
+  only:
+    - master
+    - /^v\d+(\.\d+)*$/
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-precise-3.5
+    packages:
+      - libstdc++6
+script:
+  - 'git clone https://github.com/klokantech/gl-style-package-spec.git'
+  - cd gl-style-package-spec
+  - bash ./task/run.sh
+env:
+  global:
+    - secure: >-
+        g6rWiPkS9pk7pM6SyfTw6RbkVdhnNlQbpTM3U5T66oBXtAwlT5OsvmLexTn5M95eOMcP5BsVxTZ8d0+Kpn4rXlhfLFn4/+GXe4eOd93qqTBBUkgL8pZFq3huylfT7DLKWrUoQDvHEp4cD/IgdmlbY3uS1Tz/6yJa5AjbOobc2XVNk9Cda1RpqTMP5thhOJVAunslFsrMv3XXiJ6RTFLrVCfxpTKk8KJs8GTkdJZba0U2HzIso7ck3K3RRxYpZSaqOFnWx4t9kw0THBw9paWOrPOoALG6719okQQIgeowCmbQqTLwijwqVYIZ2fIih9n+TT52OKt7eZdDVXH+X4GqVwJUek9Y5N69pTfCEmkwYOoNxg3GEGepMI8wdopZTwN/KklSmixkdmB/qpukuLLPerieMkg4dFpGl/AHU0hwfrWA/5n/Z6l40xx/Om6sD5+W2EIa6qDBMmMwdSHMNHTE4x4hwqHQk/GtGVIQ1Bl4/3hSheom5v/T0Zu0m96ZMzrksWmuxnMDmgn7bLLgXY2sM3y3yqRB1oa1Dapy/0SP3bHzl/Zz1+QltTO8CIRbYHShUuSzER/mzE9i3Aun+rZUtLzbTCERZf0dT3acBBwxb4JVPUi3B4VvxOLeJvHt9oapN5XHDpRyhiwnBf3DzA4WCUgx5VlPah7NQcN2MgF5ri4=
+deploy:
+  provider: releases
+  api_key: '${GITHUB_TOKEN}'
+  file: 'build/${TRAVIS_TAG}.zip'
+  skip_cleanup: true
+  'on':
+    tags: true
+services:
+  - docker
