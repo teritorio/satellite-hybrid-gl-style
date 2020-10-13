@@ -9,83 +9,38 @@
         "name": "Transportation",
         "collapsed": false
       },
-      "a14c9607bc7954ba1df7205bf660433f": {
-        "name": "Boundaries"
-      },
-      "101da9f13b64a08fa4b6ac1168e89e5f": {
-        "name": "Places",
-        "collapsed": false
-      }
+      "a14c9607bc7954ba1df7205bf660433f": {"name": "Boundaries"},
+      "101da9f13b64a08fa4b6ac1168e89e5f": {"name": "Places", "collapsed": false}
     },
     "openmaptiles:version": "3.x",
     "openmaptiles:mapbox:owner": "openmaptiles",
-    "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
+    "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t",
+    "maputnik:renderer": "mbgljs"
   },
-  "center": [
-    0,
-    45
-  ],
+  "center": [0, 45],
   "zoom": 14,
   "bearing": 0,
   "pitch": 0,
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "https://free.tilehosting.com/data/v3.json?key={key}"
+      "url": "https://dev2-makinamaps.makina-corpus.net/data/v3.json"
     },
     "landsat": {
       "type": "raster",
       "url": "mbtiles://landsat-hasta-611mpx.mbtiles",
       "tileSize": 256
     },
-    "metropole-9-14": {
+    "osmfr": {
       "type": "raster",
-      "url": "mbtiles://tiles-LAMB93.mbtiles",
-      "tileSize": 256
-    },
-    "metropole-15": {
-      "type": "raster",
-      "url": "mbtiles://tiles15-LAMB93.mbtiles",
-      "tileSize": 256
-    },
-    "saint-pierre-et-miquelon-9-15": {
-      "type": "raster",
-      "url": "mbtiles://tiles-RGSPM06U21.mbtiles",
-      "tileSize": 256
-    },
-    "guadeloupe-martinique-saint-martin-9-15": {
-      "type": "raster",
-      "url": "mbtiles://tiles-RGAF09UTM20.mbtiles",
-      "tileSize": 256
-    },
-    "mayotte-9-16": {
-      "type": "raster",
-      "url": "mbtiles://tiles-RGM04UTM38S.mbtiles",
-      "tileSize": 256
-    },
-    "la_reunion-9-16": {
-      "type": "raster",
-      "url": "mbtiles://tiles-RGR92UTM40S.mbtiles",
-      "tileSize": 256
-    },
-    "saint-barthelemy-9-16": {
-      "type": "raster",
-      "url": "mbtiles://tiles-UTM20W84GUAD.mbtiles",
-      "tileSize": 256
-    },
-    "guyane-9-16": {
-      "type": "raster",
-      "url": "mbtiles://tiles-UTM22RGFG95.mbtiles",
-      "tileSize": 256
-    },
-    "wallis-et-futuna-9-16": {
-      "type": "raster",
-      "url": "mbtiles://tiles-UTM01SW84.mbtiles",
-      "tileSize": 256
+      "tileSize": 256,
+      "tiles": [
+        "https://wms.openstreetmap.fr/tms/1.0.0/tous_fr/{z}/{x}/{y}.jpg"
+      ]
     }
   },
   "sprite": "https://openmaptiles.github.io/dark-matter-gl-style/sprite",
-  "glyphs": "http://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
+  "glyphs": "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "landsat",
@@ -95,59 +50,11 @@
       "maxzoom": 9
     },
     {
-      "id": "metropole-9-14",
+      "id": "osmfr",
       "type": "raster",
-      "source": "metropole-9-14",
+      "source": "osmfr",
       "minzoom": 9,
-      "maxzoom": 15
-    },
-    {
-      "id": "metropole-15",
-      "type": "raster",
-      "source": "metropole-15",
-      "minzoom": 15
-    },
-    {
-      "id": "saint-pierre-et-miquelon-9-15",
-      "type": "raster",
-      "source": "saint-pierre-et-miquelon-9-15",
-      "minzoom": 9
-    },
-    {
-      "id": "guadeloupe-martinique-saint-martin-9-15",
-      "type": "raster",
-      "source": "guadeloupe-martinique-saint-martin-9-15",
-      "minzoom": 9
-    },
-    {
-      "id": "mayotte-9-16",
-      "type": "raster",
-      "source": "mayotte-9-16",
-      "minzoom": 9
-    },
-    {
-      "id": "la_reunion-9-16",
-      "type": "raster",
-      "source": "la_reunion-9-16",
-      "minzoom": 9
-    },
-    {
-      "id": "saint-barthelemy-9-16",
-      "type": "raster",
-      "source": "saint-barthelemy-9-16",
-      "minzoom": 9
-    },
-    {
-      "id": "guyane-9-16",
-      "type": "raster",
-      "source": "guyane-9-16",
-      "minzoom": 9
-    },
-    {
-      "id": "wallis-et-futuna-9-16",
-      "type": "raster",
-      "source": "wallis-et-futuna-9-16",
-      "minzoom": 9
+      "maxzoom": 18
     },
     {
       "id": "waterway",
@@ -155,36 +62,22 @@
       "source": "openmaptiles",
       "source-layer": "waterway",
       "minzoom": 7,
-      "filter": [
-        "==",
-        "$type",
-        "LineString"
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgb(202, 202, 202)"
-      }
+      "filter": ["==", "$type", "LineString"],
+      "layout": {"visibility": "visible"},
+      "paint": {"line-color": "rgb(202, 202, 202)"}
     },
     {
       "id": "water_name",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "water_name",
-      "filter": [
-        "==",
-        "$type",
-        "LineString"
-      ],
+      "filter": ["==", "$type", "LineString"],
       "layout": {
         "text-field": "{name:latin}\n{name:nonlatin}",
         "symbol-placement": "line",
         "text-rotation-alignment": "map",
         "symbol-spacing": 500,
-        "text-font": [
-          "Metropolis Medium Italic"
-        ],
+        "text-font": ["Metropolis Medium Italic"],
         "text-size": 12
       },
       "paint": {
@@ -195,25 +88,11 @@
     {
       "id": "highway_path",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 15,
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "==",
-          "class",
-          "path"
-        ]
-      ],
+      "filter": ["all", ["==", "$type", "LineString"], ["==", "class", "path"]],
       "layout": {
         "line-cap": "round",
         "line-join": "round",
@@ -221,50 +100,23 @@
       },
       "paint": {
         "line-color": "rgba(202, 202, 202, 0.5)",
-        "line-width": {
-          "base": 1.2,
-          "stops": [
-            [
-              13,
-              1
-            ],
-            [
-              20,
-              10
-            ]
-          ]
-        },
+        "line-width": {"base": 1.2, "stops": [[13, 1], [20, 10]]},
         "line-opacity": 1,
-        "line-dasharray": [
-          1.5,
-          1.5
-        ]
+        "line-dasharray": [1.5, 1.5]
       }
     },
     {
       "id": "highway_minor",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 14,
       "maxzoom": 24,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "in",
-          "class",
-          "minor",
-          "service",
-          "track"
-        ]
+        ["==", "$type", "LineString"],
+        ["in", "class", "minor", "service", "track"]
       ],
       "layout": {
         "line-cap": "round",
@@ -273,46 +125,21 @@
       },
       "paint": {
         "line-color": "rgba(246, 246, 246, 0.5)",
-        "line-width": {
-          "base": 1.55,
-          "stops": [
-            [
-              13,
-              1.8
-            ],
-            [
-              20,
-              20
-            ]
-          ]
-        },
+        "line-width": {"base": 1.55, "stops": [[13, 1.8], [20, 20]]},
         "line-opacity": 1
       }
     },
     {
       "id": "highway_major_casing",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 11,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "in",
-          "class",
-          "primary",
-          "secondary",
-          "tertiary",
-          "trunk"
-        ]
+        ["==", "$type", "LineString"],
+        ["in", "class", "primary", "secondary", "tertiary", "trunk"]
       ],
       "layout": {
         "line-cap": "butt",
@@ -321,50 +148,22 @@
       },
       "paint": {
         "line-color": "rgba(202, 202, 202, 0.5)",
-        "line-dasharray": [
-          12,
-          0
-        ],
-        "line-width": {
-          "base": 1.3,
-          "stops": [
-            [
-              10,
-              3
-            ],
-            [
-              20,
-              23
-            ]
-          ]
-        },
+        "line-dasharray": [12, 0],
+        "line-width": {"base": 1.3, "stops": [[10, 3], [20, 23]]},
         "line-opacity": 1
       }
     },
     {
       "id": "highway_major_inner",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 11,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "in",
-          "class",
-          "primary",
-          "secondary",
-          "tertiary",
-          "trunk"
-        ]
+        ["==", "$type", "LineString"],
+        ["in", "class", "primary", "secondary", "tertiary", "trunk"]
       ],
       "layout": {
         "line-cap": "round",
@@ -373,47 +172,22 @@
       },
       "paint": {
         "line-color": "rgba(246, 246, 246, 0.5)",
-        "line-width": {
-          "base": 1.3,
-          "stops": [
-            [
-              10,
-              2
-            ],
-            [
-              20,
-              20
-            ]
-          ]
-        },
+        "line-width": {"base": 1.3, "stops": [[10, 2], [20, 20]]},
         "line-opacity": 1
       }
     },
     {
       "id": "highway_major_subtle",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 6,
       "maxzoom": 11,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "in",
-          "class",
-          "primary",
-          "secondary",
-          "tertiary",
-          "trunk"
-        ]
+        ["==", "$type", "LineString"],
+        ["in", "class", "primary", "secondary", "tertiary", "trunk"]
       ],
       "layout": {
         "line-cap": "round",
@@ -422,43 +196,22 @@
       },
       "paint": {
         "line-color": "rgba(246, 246, 246, 0.5)",
-        "line-width": {
-          "stops": [
-            [
-              6,
-              0
-            ],
-            [
-              8,
-              2
-            ]
-          ]
-        },
+        "line-width": {"stops": [[6, 0], [8, 2]]},
         "line-opacity": 1
       }
     },
     {
       "id": "highway_motorway_casing",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 7,
       "maxzoom": 24,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "==",
-          "class",
-          "motorway"
-        ]
+        ["==", "$type", "LineString"],
+        ["==", "class", "motorway"]
       ],
       "layout": {
         "line-cap": "butt",
@@ -467,51 +220,22 @@
       },
       "paint": {
         "line-color": "rgba(202, 202, 202, 0.5)",
-        "line-width": {
-          "base": 1.4,
-          "stops": [
-            [
-              5.8,
-              0
-            ],
-            [
-              6,
-              3
-            ],
-            [
-              20,
-              40
-            ]
-          ]
-        },
-        "line-dasharray": [
-          2,
-          0
-        ],
+        "line-width": {"base": 1.4, "stops": [[5.8, 0], [6, 3], [20, 40]]},
+        "line-dasharray": [2, 0],
         "line-opacity": 1
       }
     },
     {
       "id": "highway_motorway_inner",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 7,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "==",
-          "class",
-          "motorway"
-        ]
+        ["==", "$type", "LineString"],
+        ["==", "class", "motorway"]
       ],
       "layout": {
         "line-cap": "round",
@@ -520,23 +244,7 @@
       },
       "paint": {
         "line-color": "rgba(246, 246, 246, 0.5)",
-        "line-width": {
-          "base": 1.4,
-          "stops": [
-            [
-              4,
-              2
-            ],
-            [
-              6,
-              1.3
-            ],
-            [
-              20,
-              30
-            ]
-          ]
-        },
+        "line-width": {"base": 1.4, "stops": [[4, 2], [6, 1.3], [20, 30]]},
         "line-opacity": 1
       }
     },
@@ -546,14 +254,7 @@
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 15,
-      "filter": [
-        "all",
-        [
-          "==",
-          "oneway",
-          1
-        ]
-      ],
+      "filter": ["all", ["==", "oneway", 1]],
       "layout": {
         "symbol-placement": "line",
         "icon-image": "oneway",
@@ -561,22 +262,9 @@
         "icon-padding": 2,
         "icon-rotation-alignment": "map",
         "icon-rotate": 0,
-        "icon-size": {
-          "stops": [
-            [
-              15,
-              0.5
-            ],
-            [
-              19,
-              1
-            ]
-          ]
-        }
+        "icon-size": {"stops": [[15, 0.5], [19, 1]]}
       },
-      "paint": {
-        "icon-opacity": 0.5
-      }
+      "paint": {"icon-opacity": 0.5}
     },
     {
       "id": "road_oneway_opposite",
@@ -584,14 +272,7 @@
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 15,
-      "filter": [
-        "all",
-        [
-          "==",
-          "oneway",
-          -1
-        ]
-      ],
+      "filter": ["all", ["==", "oneway", -1]],
       "layout": {
         "symbol-placement": "line",
         "icon-image": "oneway",
@@ -599,45 +280,22 @@
         "icon-padding": 2,
         "icon-rotation-alignment": "map",
         "icon-rotate": 180,
-        "icon-size": {
-          "stops": [
-            [
-              15,
-              0.5
-            ],
-            [
-              19,
-              1
-            ]
-          ]
-        }
+        "icon-size": {"stops": [[15, 0.5], [19, 1]]}
       },
-      "paint": {
-        "icon-opacity": 0.5
-      }
+      "paint": {"icon-opacity": 0.5}
     },
     {
       "id": "highway_motorway_subtle",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 6,
       "maxzoom": 7,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "==",
-          "class",
-          "motorway"
-        ]
+        ["==", "$type", "LineString"],
+        ["==", "class", "motorway"]
       ],
       "layout": {
         "line-cap": "round",
@@ -646,310 +304,133 @@
       },
       "paint": {
         "line-color": "rgba(255, 255, 255, 0.5)",
-        "line-width": {
-          "base": 1.4,
-          "stops": [
-            [
-              4,
-              2
-            ],
-            [
-              6,
-              1.3
-            ]
-          ]
-        }
+        "line-width": {"base": 1.4, "stops": [[4, 2], [6, 1.3]]}
       }
     },
     {
       "id": "railway_transit",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 16,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "all",
-          [
-            "==",
-            "class",
-            "transit"
-          ],
-          [
-            "!in",
-            "brunnel",
-            "tunnel"
-          ]
-        ]
+        ["==", "$type", "LineString"],
+        ["all", ["==", "class", "transit"], ["!in", "brunnel", "tunnel"]]
       ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(186, 186, 186, 0.5)",
-        "line-width": 3
-      }
+      "layout": {"visibility": "visible", "line-join": "round"},
+      "paint": {"line-color": "rgba(186, 186, 186, 0.5)", "line-width": 3}
     },
     {
       "id": "railway_transit_dashline",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 16,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "all",
-          [
-            "==",
-            "class",
-            "transit"
-          ],
-          [
-            "!in",
-            "brunnel",
-            "tunnel"
-          ]
-        ]
+        ["==", "$type", "LineString"],
+        ["all", ["==", "class", "transit"], ["!in", "brunnel", "tunnel"]]
       ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round"
-      },
+      "layout": {"visibility": "visible", "line-join": "round"},
       "paint": {
         "line-color": "rgba(132, 132, 132, 0.5)",
         "line-width": 2,
-        "line-dasharray": [
-          3,
-          3
-        ]
+        "line-dasharray": [3, 3]
       }
     },
     {
       "id": "railway_minor",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 16,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "all",
-          [
-            "==",
-            "class",
-            "rail"
-          ],
-          [
-            "has",
-            "service"
-          ]
-        ]
+        ["==", "$type", "LineString"],
+        ["all", ["==", "class", "rail"], ["has", "service"]]
       ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(186, 186, 186, 0.5)",
-        "line-width": 3
-      }
+      "layout": {"visibility": "visible", "line-join": "round"},
+      "paint": {"line-color": "rgba(186, 186, 186, 0.5)", "line-width": 3}
     },
     {
       "id": "railway_minor_dashline",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 16,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "all",
-          [
-            "==",
-            "class",
-            "rail"
-          ],
-          [
-            "has",
-            "service"
-          ]
-        ]
+        ["==", "$type", "LineString"],
+        ["all", ["==", "class", "rail"], ["has", "service"]]
       ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round"
-      },
+      "layout": {"visibility": "visible", "line-join": "round"},
       "paint": {
         "line-color": "rgba(132, 132, 132, 0.5)",
         "line-width": 2,
-        "line-dasharray": [
-          3,
-          3
-        ]
+        "line-dasharray": [3, 3]
       }
     },
     {
       "id": "railway",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 13,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "==",
-          "class",
-          "rail"
-        ],
-        [
-          "!has",
-          "service"
-        ]
+        ["==", "$type", "LineString"],
+        ["==", "class", "rail"],
+        ["!has", "service"]
       ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round"
-      },
+      "layout": {"visibility": "visible", "line-join": "round"},
       "paint": {
-        "line-width": {
-          "base": 1.3,
-          "stops": [
-            [
-              16,
-              3
-            ],
-            [
-              20,
-              7
-            ]
-          ]
-        },
+        "line-width": {"base": 1.3, "stops": [[16, 3], [20, 7]]},
         "line-color": "rgba(186, 186, 186, 0.5)"
       }
     },
     {
       "id": "railway_dashline",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 13,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "==",
-          "class",
-          "rail"
-        ],
-        [
-          "!has",
-          "service"
-        ]
+        ["==", "$type", "LineString"],
+        ["==", "class", "rail"],
+        ["!has", "service"]
       ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round"
-      },
+      "layout": {"visibility": "visible", "line-join": "round"},
       "paint": {
         "line-color": "rgba(132, 132, 132, 0.5)",
-        "line-width": {
-          "base": 1.3,
-          "stops": [
-            [
-              16,
-              2
-            ],
-            [
-              20,
-              6
-            ]
-          ]
-        },
-        "line-dasharray": [
-          3,
-          3
-        ]
+        "line-width": {"base": 1.3, "stops": [[16, 2], [20, 6]]},
+        "line-dasharray": [3, 3]
       }
     },
     {
       "id": "highway_name_other",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation_name",
       "filter": [
         "all",
-        [
-          "!=",
-          "class",
-          "motorway"
-        ],
-        [
-          "==",
-          "$type",
-          "LineString"
-        ]
+        ["!=", "class", "motorway"],
+        ["==", "$type", "LineString"]
       ],
       "layout": {
         "text-size": 10,
         "text-max-angle": 30,
         "text-transform": "uppercase",
         "symbol-spacing": 350,
-        "text-font": [
-          "Metropolis Regular"
-        ],
+        "text-font": ["Metropolis Regular"],
         "symbol-placement": "line",
         "visibility": "visible",
         "text-rotation-alignment": "map",
@@ -958,10 +439,7 @@
       },
       "paint": {
         "text-color": "rgba(233, 233, 233, 1)",
-        "text-translate": [
-          0,
-          0
-        ],
+        "text-translate": [0, 0],
         "text-halo-color": "rgba(38, 36, 36, 1)",
         "text-halo-width": 1.5,
         "text-halo-blur": 0
@@ -970,30 +448,18 @@
     {
       "id": "highway_name_motorway",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
+      "metadata": {"mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"},
       "source": "openmaptiles",
       "source-layer": "transportation_name",
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "==",
-          "class",
-          "motorway"
-        ]
+        ["==", "$type", "LineString"],
+        ["==", "class", "motorway"]
       ],
       "layout": {
         "text-size": 10,
         "symbol-spacing": 350,
-        "text-font": [
-          "Metropolis Light"
-        ],
+        "text-font": ["Metropolis Light"],
         "symbol-placement": "line",
         "visibility": "visible",
         "text-rotation-alignment": "viewport",
@@ -1002,10 +468,7 @@
       },
       "paint": {
         "text-color": "rgba(233, 233, 233, 1)",
-        "text-translate": [
-          0,
-          2
-        ],
+        "text-translate": [0, 2],
         "text-halo-color": "rgba(38, 36, 36, 1)",
         "text-halo-width": 1.5
       }
@@ -1013,16 +476,10 @@
     {
       "id": "boundary_state",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "a14c9607bc7954ba1df7205bf660433f"
-      },
+      "metadata": {"mapbox:group": "a14c9607bc7954ba1df7205bf660433f"},
       "source": "openmaptiles",
       "source-layer": "boundary",
-      "filter": [
-        "==",
-        "admin_level",
-        4
-      ],
+      "filter": ["==", "admin_level", 4],
       "layout": {
         "line-cap": "round",
         "line-join": "round",
@@ -1030,40 +487,19 @@
       },
       "paint": {
         "line-color": "rgba(218, 203, 203, 1)",
-        "line-width": {
-          "base": 1.3,
-          "stops": [
-            [
-              3,
-              1
-            ],
-            [
-              22,
-              15
-            ]
-          ]
-        },
+        "line-width": {"base": 1.3, "stops": [[3, 1], [22, 15]]},
         "line-blur": 0.4,
-        "line-dasharray": [
-          2,
-          2
-        ],
+        "line-dasharray": [2, 2],
         "line-opacity": 1
       }
     },
     {
       "id": "boundary_country",
       "type": "line",
-      "metadata": {
-        "mapbox:group": "a14c9607bc7954ba1df7205bf660433f"
-      },
+      "metadata": {"mapbox:group": "a14c9607bc7954ba1df7205bf660433f"},
       "source": "openmaptiles",
       "source-layer": "boundary",
-      "filter": [
-        "==",
-        "admin_level",
-        2
-      ],
+      "filter": ["==", "admin_level", 2],
       "layout": {
         "line-cap": "round",
         "line-join": "round",
@@ -1071,71 +507,30 @@
       },
       "paint": {
         "line-color": "rgba(218, 203, 203, 1)",
-        "line-width": {
-          "base": 1.1,
-          "stops": [
-            [
-              3,
-              1
-            ],
-            [
-              22,
-              20
-            ]
-          ]
-        },
-        "line-blur": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              0.4
-            ],
-            [
-              22,
-              4
-            ]
-          ]
-        },
+        "line-width": {"base": 1.1, "stops": [[3, 1], [22, 20]]},
+        "line-blur": {"base": 1, "stops": [[0, 0.4], [22, 4]]},
         "line-opacity": 1
       }
     },
     {
       "id": "place_other",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
+      "metadata": {"mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"},
       "source": "openmaptiles",
       "source-layer": "place",
       "maxzoom": 14,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "in",
-          "class",
-          "hamlet",
-          "isolated_dwelling",
-          "neighbourhood"
-        ]
+        ["==", "$type", "Point"],
+        ["in", "class", "hamlet", "isolated_dwelling", "neighbourhood"]
       ],
       "layout": {
         "text-size": 10,
         "text-transform": "uppercase",
-        "text-font": [
-          "Metropolis Regular"
-        ],
+        "text-font": ["Metropolis Regular"],
         "text-justify": "center",
         "visibility": "visible",
-        "text-offset": [
-          0.5,
-          0
-        ],
+        "text-offset": [0.5, 0],
         "text-anchor": "center",
         "text-field": "{name:latin}\n{name:nonlatin}"
       },
@@ -1149,37 +544,18 @@
     {
       "id": "place_suburb",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
+      "metadata": {"mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"},
       "source": "openmaptiles",
       "source-layer": "place",
       "maxzoom": 15,
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "==",
-          "class",
-          "suburb"
-        ]
-      ],
+      "filter": ["all", ["==", "$type", "Point"], ["==", "class", "suburb"]],
       "layout": {
         "text-size": 10,
         "text-transform": "uppercase",
-        "text-font": [
-          "Metropolis Regular"
-        ],
+        "text-font": ["Metropolis Regular"],
         "text-justify": "center",
         "visibility": "visible",
-        "text-offset": [
-          0.5,
-          0
-        ],
+        "text-offset": [0.5, 0],
         "text-anchor": "center",
         "text-field": "{name:latin}\n{name:nonlatin}"
       },
@@ -1193,37 +569,18 @@
     {
       "id": "place_village",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
+      "metadata": {"mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"},
       "source": "openmaptiles",
       "source-layer": "place",
       "maxzoom": 14,
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "==",
-          "class",
-          "village"
-        ]
-      ],
+      "filter": ["all", ["==", "$type", "Point"], ["==", "class", "village"]],
       "layout": {
         "text-size": 10,
         "text-transform": "uppercase",
-        "text-font": [
-          "Metropolis Regular"
-        ],
+        "text-font": ["Metropolis Regular"],
         "text-justify": "left",
         "visibility": "visible",
-        "text-offset": [
-          0.5,
-          0.2
-        ],
+        "text-offset": [0.5, 0.2],
         "icon-size": 0.4,
         "text-anchor": "left",
         "text-field": "{name:latin}\n{name:nonlatin}"
@@ -1239,64 +596,21 @@
     {
       "id": "place_town",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
+      "metadata": {"mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"},
       "source": "openmaptiles",
       "source-layer": "place",
       "maxzoom": 15,
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "==",
-          "class",
-          "town"
-        ]
-      ],
+      "filter": ["all", ["==", "$type", "Point"], ["==", "class", "town"]],
       "layout": {
         "text-size": 10,
-        "icon-image": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "circle-11"
-            ],
-            [
-              9,
-              ""
-            ]
-          ]
-        },
+        "icon-image": {"base": 1, "stops": [[0, "circle-11"], [9, ""]]},
         "text-transform": "uppercase",
-        "text-font": [
-          "Metropolis Regular"
-        ],
+        "text-font": ["Metropolis Regular"],
         "text-justify": "left",
         "visibility": "visible",
-        "text-offset": [
-          0.5,
-          0.2
-        ],
+        "text-offset": [0.5, 0.2],
         "icon-size": 0.4,
-        "text-anchor": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "left"
-            ],
-            [
-              8,
-              "center"
-            ]
-          ]
-        },
+        "text-anchor": {"base": 1, "stops": [[0, "left"], [8, "center"]]},
         "text-field": "{name:latin}\n{name:nonlatin}"
       },
       "paint": {
@@ -1310,69 +624,26 @@
     {
       "id": "place_city",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
+      "metadata": {"mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"},
       "source": "openmaptiles",
       "source-layer": "place",
       "maxzoom": 14,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "==",
-          "class",
-          "city"
-        ],
-        [
-          ">",
-          "rank",
-          3
-        ]
+        ["==", "$type", "Point"],
+        ["==", "class", "city"],
+        [">", "rank", 3]
       ],
       "layout": {
         "text-size": 10,
-        "icon-image": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "circle-11"
-            ],
-            [
-              9,
-              ""
-            ]
-          ]
-        },
+        "icon-image": {"base": 1, "stops": [[0, "circle-11"], [9, ""]]},
         "text-transform": "uppercase",
-        "text-font": [
-          "Metropolis Regular"
-        ],
+        "text-font": ["Metropolis Regular"],
         "text-justify": "left",
         "visibility": "visible",
-        "text-offset": [
-          0.5,
-          0.2
-        ],
+        "text-offset": [0.5, 0.2],
         "icon-size": 0.4,
-        "text-anchor": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "left"
-            ],
-            [
-              8,
-              "center"
-            ]
-          ]
-        },
+        "text-anchor": {"base": 1, "stops": [[0, "left"], [8, "center"]]},
         "text-field": "{name:latin}\n{name:nonlatin}"
       },
       "paint": {
@@ -1386,69 +657,26 @@
     {
       "id": "place_city_large",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
+      "metadata": {"mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"},
       "source": "openmaptiles",
       "source-layer": "place",
       "maxzoom": 12,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "<=",
-          "rank",
-          3
-        ],
-        [
-          "==",
-          "class",
-          "city"
-        ]
+        ["==", "$type", "Point"],
+        ["<=", "rank", 3],
+        ["==", "class", "city"]
       ],
       "layout": {
         "text-size": 14,
-        "icon-image": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "circle-11"
-            ],
-            [
-              9,
-              ""
-            ]
-          ]
-        },
+        "icon-image": {"base": 1, "stops": [[0, "circle-11"], [9, ""]]},
         "text-transform": "uppercase",
-        "text-font": [
-          "Metropolis Regular"
-        ],
+        "text-font": ["Metropolis Regular"],
         "text-justify": "left",
         "visibility": "visible",
-        "text-offset": [
-          0.5,
-          0.2
-        ],
+        "text-offset": [0.5, 0.2],
         "icon-size": 0.4,
-        "text-anchor": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              "left"
-            ],
-            [
-              8,
-              "center"
-            ]
-          ]
-        },
+        "text-anchor": {"base": 1, "stops": [[0, "left"], [8, "center"]]},
         "text-field": "{name:latin}\n{name:nonlatin}"
       },
       "paint": {
@@ -1462,31 +690,15 @@
     {
       "id": "place_state",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
+      "metadata": {"mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"},
       "source": "openmaptiles",
       "source-layer": "place",
       "maxzoom": 12,
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "==",
-          "class",
-          "state"
-        ]
-      ],
+      "filter": ["all", ["==", "$type", "Point"], ["==", "class", "state"]],
       "layout": {
         "visibility": "visible",
         "text-field": "{name:latin}\n{name:nonlatin}",
-        "text-font": [
-          "Metropolis Regular"
-        ],
+        "text-font": ["Metropolis Regular"],
         "text-transform": "uppercase",
         "text-size": 10
       },
@@ -1500,49 +712,22 @@
     {
       "id": "place_country_other",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
+      "metadata": {"mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"},
       "source": "openmaptiles",
       "source-layer": "place",
       "maxzoom": 8,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "==",
-          "class",
-          "country"
-        ],
-        [
-          "!has",
-          "iso_a2"
-        ]
+        ["==", "$type", "Point"],
+        ["==", "class", "country"],
+        ["!has", "iso_a2"]
       ],
       "layout": {
         "visibility": "visible",
         "text-field": "{name:latin}",
-        "text-font": [
-          "Metropolis Light Italic"
-        ],
+        "text-font": ["Metropolis Light Italic"],
         "text-transform": "uppercase",
-        "text-size": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              9
-            ],
-            [
-              1,
-              11
-            ]
-          ]
-        }
+        "text-size": {"base": 1, "stops": [[0, 9], [1, 11]]}
       },
       "paint": {
         "text-halo-width": 1.5,
@@ -1553,54 +738,23 @@
     {
       "id": "place_country_minor",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
+      "metadata": {"mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"},
       "source": "openmaptiles",
       "source-layer": "place",
       "maxzoom": 8,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "==",
-          "class",
-          "country"
-        ],
-        [
-          ">=",
-          "rank",
-          2
-        ],
-        [
-          "has",
-          "iso_a2"
-        ]
+        ["==", "$type", "Point"],
+        ["==", "class", "country"],
+        [">=", "rank", 2],
+        ["has", "iso_a2"]
       ],
       "layout": {
         "visibility": "visible",
         "text-field": "{name:latin}",
-        "text-font": [
-          "Metropolis Regular"
-        ],
+        "text-font": ["Metropolis Regular"],
         "text-transform": "uppercase",
-        "text-size": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              10
-            ],
-            [
-              6,
-              12
-            ]
-          ]
-        }
+        "text-size": {"base": 1, "stops": [[0, 10], [6, 12]]}
       },
       "paint": {
         "text-halo-width": 1.5,
@@ -1611,58 +765,23 @@
     {
       "id": "place_country_major",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
-      },
+      "metadata": {"mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"},
       "source": "openmaptiles",
       "source-layer": "place",
       "maxzoom": 6,
       "filter": [
         "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "<=",
-          "rank",
-          1
-        ],
-        [
-          "==",
-          "class",
-          "country"
-        ],
-        [
-          "has",
-          "iso_a2"
-        ]
+        ["==", "$type", "Point"],
+        ["<=", "rank", 1],
+        ["==", "class", "country"],
+        ["has", "iso_a2"]
       ],
       "layout": {
         "visibility": "visible",
         "text-field": "{name:latin}",
-        "text-font": [
-          "Metropolis Regular"
-        ],
+        "text-font": ["Metropolis Regular"],
         "text-transform": "uppercase",
-        "text-size": {
-          "base": 1.4,
-          "stops": [
-            [
-              0,
-              10
-            ],
-            [
-              3,
-              12
-            ],
-            [
-              4,
-              14
-            ]
-          ]
-        },
+        "text-size": {"base": 1.4, "stops": [[0, 10], [3, 12], [4, 14]]},
         "text-anchor": "center"
       },
       "paint": {
