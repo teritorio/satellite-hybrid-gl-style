@@ -15,35 +15,21 @@
       "type": "vector",
       "url": "https://dev2-makinamaps.makina-corpus.net/data/v3.json"
     },
-    "landsat": {
-      "type": "raster",
-      "url": "mbtiles://landsat-hasta-611mpx.mbtiles",
-      "tileSize": 256
-    },
-    "osmfr": {
-      "type": "raster",
-      "tileSize": 256,
-      "tiles": [
-        "https://wms.openstreetmap.fr/tms/1.0.0/tous_fr/{z}/{x}/{y}.jpg"
-      ]
+    "ortho": {
+        "type": "raster",
+        "tiles": [
+            "https://wxs.ign.fr/choisirgeoportail/geoportail/r/wms?bbox={bbox-epsg-3857}&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&format=image/png&styles=&width=512&height=512&layers=HR.ORTHOIMAGERY.ORTHOPHOTOS"
+        ],
+        "attribution": "IGN"
     }
   },
   "sprite": "https://openmaptiles.github.io/dark-matter-gl-style/sprite",
   "glyphs": "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
   "layers": [
     {
-      "id": "landsat",
-      "type": "raster",
-      "source": "landsat",
-      "minzoom": 0,
-      "maxzoom": 9
-    },
-    {
-      "id": "osmfr",
-      "type": "raster",
-      "source": "osmfr",
-      "minzoom": 9,
-      "maxzoom": 18
+        "id": "ortho",
+        "type": "raster",
+        "source": "ortho"
     },
     {
       "id": "waterway",
