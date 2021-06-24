@@ -18,34 +18,20 @@
       "type": "vector",
       "url": "https://api.maptiler.com/tiles/v3/tiles.json?key=Xfb74aIJXmRrUdfJyYo5"
     },
-    "landsat": {
+    "ortho": {
       "type": "raster",
-      "url": "mbtiles://landsat-hasta-611mpx.mbtiles",
-      "tileSize": 256
-    },
-    "osmfr": {
-      "type": "raster",
-      "tileSize": 256,
       "tiles": [
-        "https://wms.openstreetmap.fr/tms/1.0.0/tous_fr/{z}/{x}/{y}.jpg"
-      ]
+        "https://wxs.ign.fr/choisirgeoportail/geoportail/r/wms?bbox={bbox-epsg-3857}&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&format=image/png&styles=&width=512&height=512&layers=HR.ORTHOIMAGERY.ORTHOPHOTOS"
+      ],
+      "attribution": "IGN"
     }
   },
   "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=Xfb74aIJXmRrUdfJyYo5",
   "layers": [
     {
-      "id": "landsat",
+      "id": "ortho",
       "type": "raster",
-      "source": "landsat",
-      "minzoom": 0,
-      "maxzoom": 9
-    },
-    {
-      "id": "osmfr",
-      "type": "raster",
-      "source": "osmfr",
-      "minzoom": 9,
-      "maxzoom": 18
+      "source": "ortho"
     },
     {
       "id": "waterway",
